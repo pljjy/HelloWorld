@@ -41,7 +41,7 @@ internal class HelloWorldMain
         {
             fixed (string* ptrToArray = &HelloWorld[0])
             {
-                for (int i = 1; i < HelloWorld.Length+1; i++)
+                for (int i = 0; i < HelloWorld.Length; i++)
                 {
                     Console.Write(*(ptrToArray+i));
                 }

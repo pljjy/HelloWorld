@@ -14,7 +14,7 @@ public class Symbol : ISymbol
 
     public char ToChar()
     {
-        return Convert.ToChar(_c.ToString());
+        return (char)_c;
     }
 
     public string Connect2Symbols(ISymbol c2)
