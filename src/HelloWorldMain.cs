@@ -27,6 +27,23 @@ internal class HelloWorldMain
         string or = symbol4.Connect2Symbols(symbol8);
         string ld = symbol3.Connect2Symbols(symbol9);
 
+        string _Part1 = "10\0"; // has to be unique
+        string _Part2 = "20\0"; 
+        string _Part3 = "30\0"; 
+        string _Part4 = "40\0"; 
+        string _Part5 = "50\0"; 
+        string _Part6 = "60\0"; 
+
+        string[] _outputParts = 
+        {
+            _Part1,
+            _Part2,
+            _Part3,
+            _Part4,
+            _Part5,
+            _Part6
+        };
+
         string[] HelloWorld = new string[6]
         {
             He,
@@ -37,11 +54,24 @@ internal class HelloWorldMain
             ld
         };
 
+        string output = "";
+
+        foreach (string part in HelloWorld)
+        {
+            _outputParts[Array.IndexOf(HelloWorld, part)].Mutate(part);
+        }
+
+        for (int i = 0; i<(HelloWorld.Length+_outputParts.Length)/2; i++)
+        {
+            output+=_outputParts[i];
+        }
+
+        var outputArr = output.ToCharArray();
         unsafe
         {
-            fixed (string* ptrToArray = &HelloWorld[0])
+            fixed (char* ptrToArray = &outputArr[0])
             {
-                for (int i = 0; i < HelloWorld.Length; i++)
+                for (int i = 0; i < output.Length; i++)
                 {
                     Console.Write(*(ptrToArray+i));
                 }
